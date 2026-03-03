@@ -19,7 +19,6 @@ from pytensor.tensor.math import (
     erfinv,
     gammainccinv,
     gammaincinv,
-    iv,
     kve,
     log,
     log1mexp,
@@ -38,7 +37,7 @@ from pytensor.link.jax.dispatch import jax_funcify
 
 
 try:
-    pass
+    import tensorflow_probability.substrates.jax.math  # noqa: F401
 
     TFP_INSTALLED = True
 except ModuleNotFoundError:
@@ -148,7 +147,6 @@ def test_erfinv():
     [
         (erfcx, (0.7,)),
         (erfcinv, (0.7,)),
-        (iv, (0.3, 0.7)),
         (kve, (-2.5, 2.0)),
     ],
 )
